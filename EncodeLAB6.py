@@ -23,8 +23,10 @@ def encode_number(password):
 
 def decode_number(password):
     decoded_pass = ""
+    for digit in password:
+            decoded_digit = str((int(digit) - 3 ) % 10)  # Decoding by reversing the encoding
+            decoded_pass += decoded_digit
     return decoded_pass
-
 
 if __name__ == '__main__':
     while True:
@@ -36,7 +38,7 @@ if __name__ == '__main__':
         elif menu_option == "2":
             if password is not None:
                 encoded_password = encode_number(password)
-                print(f"The encoded password is {encoded_password}, and the original password is {password}")
+                print(f"The encoded password is {encoded_password}, and the original password is {decode_number(password)}")
             else:
                 print(f"No password has been encoded yet.")
         elif menu_option == "3":
